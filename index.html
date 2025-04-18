@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gesture Video Call</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #121212;
+      color: #fff;
+    }
+    #controls {
+      padding: 1em;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    #room-id-input {
+      padding: 0.5em;
+      font-size: 1em;
+    }
+    #video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+      padding: 1em;
+    }
+    .video-box {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-stream {
+      width: 320px;
+      height: 240px;
+      background: black;
+    }
+    .user-name,
+    .prediction-label {
+      text-align: center;
+      margin-top: 5px;
+    }
+    .prediction-label {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    #status,
+    #participant-count,
+    #remote-gesture-container {
+      text-align: center;
+      margin: 1em 0;
+    }
+    #remote-gesture {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #00e676;
+    }
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="controls">
+    <input id="room-id-input" placeholder="Enter Room ID" />
+    <button onclick="joinCall()">Join</button>
+    <button onclick="leaveCall()" id="leave-btn" disabled>Leave</button>
+ <!--    <button onclick="toggleMute()" id="mute-btn" disabled>Mute</button> -->
+  </div>
+
+  <div id="status">Not connected</div>
+  <div id="participant-count">Participants: 0</div>
+
+ 
+  <div id="video-grid"></div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
